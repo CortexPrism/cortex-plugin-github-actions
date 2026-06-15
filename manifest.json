@@ -1,0 +1,79 @@
+{
+  "name": "cortex-plugin-github-actions",
+  "version": "1.0.0",
+  "description": "Trigger, monitor, debug GitHub Actions runs",
+  "kind": "esm",
+  "entryPoint": "mod.ts",
+  "runtime": "deno",
+  "author": "CortexPrism",
+  "license": "MIT",
+  "repository": "https://github.com/CortexPrism/cortex-plugin-github-actions",
+  "capabilities": [
+    "tools",
+    "network:fetch"
+  ],
+  "tools": [
+    {
+      "name": "actions_list_workflows",
+      "description": "List workflows for a repository",
+      "params": [
+        { "name": "repo", "type": "string", "description": "Repository in owner/repo format", "required": true }
+      ]
+    },
+    {
+      "name": "actions_trigger",
+      "description": "Trigger a workflow run",
+      "params": [
+        { "name": "repo", "type": "string", "description": "Repository in owner/repo format", "required": true },
+        { "name": "workflow_id", "type": "string", "description": "Workflow ID or filename", "required": true },
+        { "name": "ref", "type": "string", "description": "Git ref to run on", "required": false, "default": "main" },
+        { "name": "inputs", "type": "string", "description": "JSON string of workflow inputs", "required": false }
+      ]
+    },
+    {
+      "name": "actions_get_run",
+      "description": "Get details of a workflow run",
+      "params": [
+        { "name": "repo", "type": "string", "description": "Repository in owner/repo format", "required": true },
+        { "name": "run_id", "type": "number", "description": "The run ID", "required": true }
+      ]
+    },
+    {
+      "name": "actions_list_runs",
+      "description": "List recent workflow runs",
+      "params": [
+        { "name": "repo", "type": "string", "description": "Repository in owner/repo format", "required": true },
+        { "name": "status", "type": "string", "description": "Filter by run status", "required": false, "enum": ["completed", "in_progress", "queued", "all"] },
+        { "name": "limit", "type": "number", "description": "Maximum results to return", "required": false, "default": 10 }
+      ]
+    },
+    {
+      "name": "actions_get_logs",
+      "description": "Get logs for a workflow run",
+      "params": [
+        { "name": "repo", "type": "string", "description": "Repository in owner/repo format", "required": true },
+        { "name": "run_id", "type": "number", "description": "The run ID", "required": true },
+        { "name": "job_name", "type": "string", "description": "Specific job name to get logs for", "required": false }
+      ]
+    },
+    {
+      "name": "actions_rerun",
+      "description": "Re-run a workflow",
+      "params": [
+        { "name": "repo", "type": "string", "description": "Repository in owner/repo format", "required": true },
+        { "name": "run_id", "type": "number", "description": "The run ID", "required": true }
+      ]
+    }
+  ],
+  "dependencies": {},
+  "peerDependencies": {
+    "cortex": ">=1.0.0"
+  },
+  "settings": {
+    "section": "GitHub",
+    "fields": [
+      { "key": "githubToken", "label": "GitHub Token", "type": "secret", "description": "GitHub personal access token for API authentication" }
+    ]
+  },
+  "aiDisclosure": { "tools": ["Claude Code (Anthropic)"], "humanReview": true }
+}
