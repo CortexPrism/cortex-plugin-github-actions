@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-github-actions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Trigger, monitor, debug GitHub Actions runs",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -66,7 +66,12 @@
           "description": "Repository in owner/repo format",
           "required": true
         },
-        { "name": "run_id", "type": "number", "description": "The run ID", "required": true }
+        {
+          "name": "run_id",
+          "type": "number",
+          "description": "The run ID",
+          "required": true
+        }
       ]
     },
     {
@@ -84,7 +89,12 @@
           "type": "string",
           "description": "Filter by run status",
           "required": false,
-          "enum": ["completed", "in_progress", "queued", "all"]
+          "enum": [
+            "completed",
+            "in_progress",
+            "queued",
+            "all"
+          ]
         },
         {
           "name": "limit",
@@ -105,7 +115,12 @@
           "description": "Repository in owner/repo format",
           "required": true
         },
-        { "name": "run_id", "type": "number", "description": "The run ID", "required": true },
+        {
+          "name": "run_id",
+          "type": "number",
+          "description": "The run ID",
+          "required": true
+        },
         {
           "name": "job_name",
           "type": "string",
@@ -124,7 +139,12 @@
           "description": "Repository in owner/repo format",
           "required": true
         },
-        { "name": "run_id", "type": "number", "description": "The run ID", "required": true }
+        {
+          "name": "run_id",
+          "type": "number",
+          "description": "The run ID",
+          "required": true
+        }
       ]
     }
   ],
@@ -132,16 +152,24 @@
   "peerDependencies": {
     "cortex": ">=1.0.0"
   },
-  "settings": {
-    "section": "GitHub",
-    "fields": [
-      {
-        "key": "githubToken",
-        "label": "GitHub Token",
-        "type": "secret",
-        "description": "GitHub personal access token for API authentication"
-      }
-    ]
+  "aiDisclosure": {
+    "tools": [
+      "Claude Code (Anthropic)"
+    ],
+    "humanReview": true
   },
-  "aiDisclosure": { "tools": ["Claude Code (Anthropic)"], "humanReview": true }
+  "homepage": "https://github.com/CortexPrism/cortex-plugin-github-actions",
+  "ui": {
+    "settings": {
+      "section": "GitHub",
+      "fields": [
+        {
+          "key": "githubToken",
+          "label": "GitHub Token",
+          "type": "secret",
+          "description": "GitHub personal access token for API authentication"
+        }
+      ]
+    }
+  }
 }
