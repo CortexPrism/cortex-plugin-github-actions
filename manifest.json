@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-github-actions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Trigger, monitor, debug GitHub Actions runs",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -46,7 +46,7 @@
           "type": "string",
           "description": "Git ref to run on",
           "required": false,
-          "default": "main"
+          "defaultValue": "main"
         },
         {
           "name": "inputs",
@@ -101,7 +101,7 @@
           "type": "number",
           "description": "Maximum results to return",
           "required": false,
-          "default": 10
+          "defaultValue": 10
         }
       ]
     },
@@ -150,7 +150,7 @@
   ],
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [

@@ -1,5 +1,5 @@
 // deno-lint-ignore-file
-import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.ts';
+import type { PluginContext, Tool, ToolCallResult } from 'cortex/plugins';
 
 let config: Record<string, string> = {};
 
@@ -34,7 +34,7 @@ const actions_list_workflows: Tool = {
     }],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const repo = args.repo;
@@ -109,7 +109,7 @@ const actions_trigger: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const repo = args.repo;
@@ -186,7 +186,7 @@ const actions_get_run: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const repo = args.repo;
@@ -266,7 +266,7 @@ const actions_list_runs: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const repo = args.repo;
@@ -333,7 +333,7 @@ const actions_get_logs: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const repo = args.repo;
@@ -424,7 +424,7 @@ const actions_rerun: Tool = {
     ],
     capabilities: ['network:fetch'],
   },
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = Date.now();
     try {
       const repo = args.repo;
